@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #cube {
+	  width: 400px;
+	  height: 400px;
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  transform-style: preserve-3d;
+	  transform: rotateX(45deg) rotateY(45deg);
+	  transition: transform 1s;
+	}
+    #cube figure {
+      display: block;
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 1px solid black;
+    }
+    #front {
+      transform: translateZ(100px);
+    }
+    #back {
+      transform: rotateY(180deg) translateZ(100px);
+    }
+    #right {
+      transform: rotateY(90deg) translateZ(100px);
+    }
+    #left {
+      transform: rotateY(-90deg) translateZ(100px);
+    }
+    #top {
+      transform: rotateX(90deg) translateZ(100px);
+    }
+    #bottom {
+      transform: rotateX(-90deg) translateZ(100px);
+    }
+  </style>
+</head>
+<body>
+  <div id="cube">
+    <figure id="front">Front</figure>
+    <figure id="back">Back</figure>
+    <figure id="right">Right</figure>
+    <figure id="left">Left</figure>
+    <figure id="top">Top</figure>
+    <figure id="bottom">Bottom</figure>
+  </div>
+  <script>
+    var cube = document.getElementById("cube");
+    var angle = 0;
+    function rotate() {
+      angle += 1;
+      cube.style.transform = "rotateX(" + angle + "deg) rotateY(" + angle + "deg)";
+      requestAnimationFrame(rotate);
+    }
+    rotate();
+  </script>
+</body>
+</html>
